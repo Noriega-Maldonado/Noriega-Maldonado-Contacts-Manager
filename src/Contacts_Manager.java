@@ -104,6 +104,19 @@ public class Contacts_Manager {
 //            } else
 //            {
 //            }
+
+//        Patric's code of printing/viewing contact info list:
+//        List<String> printContacts = Files.readAllLines(contactFile);
+//        List<String> newList = new ArrayList<>();
+//        for (String line : printContacts) {
+//            if (line.equals(userInput2)) {
+//                    System.out.println("You have " + contacts.length() + " contacts.");
+//                    for (int i = 0; i < contacts.length(); i++) {
+////                        System.out.println((i + 1) + ". " + printContacts);
+//                    }
+//                }
+//            }
+//above code is printing 5 times with 16 contacts. and adding another print every time code runs
         System.out.println("Which contact did you want to delete?");
         String userInputDelete = sc.nextLine();
 
