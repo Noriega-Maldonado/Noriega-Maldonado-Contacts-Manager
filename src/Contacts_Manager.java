@@ -4,35 +4,39 @@ import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.nio.file.Paths;
 import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
-
-
+import java.util.*;
 
 
 public class Contacts_Manager {
 
-    private String contact;
-
-    private int contactNumber;
     private String fullName;
+    private int contactNumber;
 
 
-    public void contactName(String fullName, int contactNumber) {
+    public Contacts_Manager(String fullName, int contactNumber) {
         this.fullName = fullName;
         this.contactNumber = contactNumber;
     }
 
+    public void setFullName(String fullName) {
 
-//    public int getContactNumber() {
-//        return contactNumber;
-//    }
-//
-//    public void setContactNumber(int contactNumber) {
-//        this.contactNumber = contactNumber;
-//    }
+        this.fullName = fullName;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public int getContactNumber() {
+
+        return contactNumber;
+
+    }
+
+    public void setContactNumber(int contactNumber) {
+
+        this.contactNumber = contactNumber;
+    }
 
     public static void main(String[] args) throws IOException {
 
@@ -63,7 +67,7 @@ public class Contacts_Manager {
             }
         }
 
-//        List <String>contactList = Arrays.asList("ContactJuan");
+
 
 
 //     List<String> Files.readAllLine(contactFile);
@@ -75,10 +79,10 @@ public class Contacts_Manager {
         System.out.println("5. Exit.");
 //        System.out.println("Enter an option (1, 2, 3, 4 or 5) :");
 //        int userInput1 = sc.nextInt();
-        System.out.println("Please enter a full name: ");
+//        System.out.println("Please enter a full name: ");
 //        sc.nextLine();
-        String userInput2 = sc.nextLine();
-//
+//        String userInput2 = sc.nextLine();
+//        Contacts_Manager contact1 = new Contacts_Manager("Jose","Maldonado",2109118925);
 //        Add new contacts
 //        try {
 //            Files.write(contactFile, Arrays.asList(userInput2),StandardOpenOption.APPEND);
@@ -88,9 +92,10 @@ public class Contacts_Manager {
 //        if (userInput == 1){
 
 //      View all contacts
-//       List<String> printContacts = Files.readAllLines(contactFile);
-
         List<String> printContacts = Files.readAllLines(contactFile);
+        System.out.println(printContacts);
+
+//        List<String> printContacts = Files.readAllLines(contactFile);
 //        List<String> newList = new ArrayList<>();
 // searching though our contact list and finding match from user input
 //        for (String line : printContacts) {
@@ -99,27 +104,36 @@ public class Contacts_Manager {
 //            } else
 //            {
 //            }
-
-
+        System.out.println("Which contact did you want to delete?");
+        String userInputDelete = sc.nextLine();
 
 //        Deleting a contact
-        for (String line : printContacts) {
-            if (line.equals(userInput2)) {
-                System.out.println("true");
-//                printContacts.remove(line);
-//
-            } else
-            {
+//        https://crunchify.com/in-java-how-to-remove-elements-while-iterating-a-list-arraylist-5-different-ways/
+
+
+        ListIterator<String> contactList = printContacts.listIterator();
+        while (contactList.hasNext()) {
+
+            if (userInputDelete.equals(contactList.next())) {
+//                System.out.println("true");
+                contactList.remove();
+
+
+            }
+
+
         }
+        System.out.println(contactList);
+
 
 //       System.out.println(printContacts.replaceAll("[","").replaceAll("]",""));
 //
 //        }else if(userInput ==2){
 
 
-        }
-
     }
+
 }
+
 
 
