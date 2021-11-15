@@ -45,6 +45,10 @@ public class Contacts_Manager {
         this.contactNumber = contactNumber;
     }
 
+//    public void deleteContact(int index){
+//        printlist.remove(index);
+//    }
+
     public static void viewContacts() throws IOException {
 
         String directory = "./src/contacts.txt";
@@ -193,7 +197,23 @@ public class Contacts_Manager {
 
         }
         System.out.println("Which contact would you like to delete?");
-    }
+        String userInput = sc.nextLine();
+        if (printContacts.contains(userInput)){
+            printContacts.remove(userInput);
+        }
+
+//        Iterator iterator = printContacts.iterator();
+//        while (iterator.hasNext()) {
+//            int x = (Integer) iterator.next();
+//            if (x == userInput)
+//                iterator.remove();
+        }
+
+
+//        printContacts.remove(new Integer(userInput));
+
+
+//    }
 
 
     public static void main(String[] args) throws IOException {
@@ -259,9 +279,11 @@ public class Contacts_Manager {
                 findEntry();
             } else if (userInput == 4) {
                 deleteContact();
+                viewContacts();
             } else if (userInput == 5) {
 
                 System.out.println("Goodbye");
+                break;
             }
         }while(exit);
 
