@@ -9,6 +9,7 @@ import java.util.*;
 
 public class Contacts_Manager {
 
+    private static Scanner scanner;
     private String fullName;
     private int contactNumber;
 
@@ -123,6 +124,37 @@ public class Contacts_Manager {
 //    }
 
 
+    public static void findEntry() {
+
+        Scanner scan = new Scanner(System.in);
+
+        String search;
+
+        String directory = "./src/contacts.txt";
+
+        String contacts = "contact.info.txt";
+
+        Path contactFile = Paths.get(directory, contacts);
+
+        System.out.print("Who would you like to search for: ");
+        search = scan.nextLine();
+
+        List<String> printContacts = Collections.singletonList(search);
+        try {
+            printContacts = Files.readAllLines(contactFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        for (String printContact : printContacts) {
+
+            if (search.equals(printContact)) {
+
+                System.out.print(printContact);
+
+            }
+        }
+    }
+
     public static void main(String[] args) throws IOException {
 
         Scanner sc = new Scanner(System.in);
@@ -171,6 +203,8 @@ public class Contacts_Manager {
 //            add new contact
         } else if (userInput1 == 2){
             addContact();
+        }else if(userInput1 == 3){
+            findEntry();
         }
 
 
