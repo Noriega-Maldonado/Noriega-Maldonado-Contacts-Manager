@@ -155,6 +155,47 @@ public class Contacts_Manager {
         }
     }
 
+    public static void deleteContact() throws IOException {
+
+        Scanner sc = new Scanner(System.in);
+
+        String directory = "./src/contacts.txt";
+
+        String contacts = "contact.info.txt";
+
+        Path dataDirectory = Paths.get(directory);
+
+        Path contactFile = Paths.get(directory, contacts);
+
+
+        if (Files.notExists(dataDirectory)) {
+
+            try {
+                Files.createDirectories(dataDirectory);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if (!Files.exists(contactFile)) {
+            try {
+                Files.createFile(contactFile);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+        List<String> printContacts = Files.readAllLines(contactFile);
+
+        for (int i = 0; i < printContacts.size(); i++) {
+
+            System.out.println((i + 1) + ". " + printContacts.get(i));
+
+        }
+        System.out.println("Which contact would you like to delete?");
+    }
+
+
     public static void main(String[] args) throws IOException {
 
         Scanner sc = new Scanner(System.in);
@@ -187,34 +228,47 @@ public class Contacts_Manager {
         }
 
 
-//     List<String> Files.readAllLine(contactFile);
+        int userInput = 0;
+        boolean exit = false;
 
-        System.out.println("1. View Contacts.");
-        System.out.println("2. Add a new contact");
-        System.out.println("3. Search a contact by name.");
-        System.out.println("4. Delete an existing contact.");
-        System.out.println("5. Exit.");
-        System.out.println("Enter an option (1, 2, 3, 4 or 5) :");
-        int userInput1 = sc.nextInt();
+        do {
+            System.out.println("1. View Contacts.");
+            System.out.println("2. Add a new contact");
+            System.out.println("3. Search a contact by name.");
+            System.out.println("4. Delete an existing contact.");
+            System.out.println("5. Exit.");
+            System.out.println("Enter an option (1, 2, 3, 4 or 5) :");
+            userInput = sc.nextInt();
 
 //          View Contacts
-        if (userInput1 == 1) {
-            viewContacts();
-//            add new contact
-        } else if (userInput1 == 2){
-            addContact();
-        }else if(userInput1 == 3){
-            findEntry();
-        }
 
+            if (userInput == 1) {
+                viewContacts();
+//
+//            add new contact
+
+            } else if (userInput == 2) {
+
+                addContact();
+                System.out.println("You just added a new contact!");
+
+                viewContacts();
+
+            } else if (userInput == 3) {
+
+                findEntry();
+            } else if (userInput == 4) {
+                deleteContact();
+            } else if (userInput == 5) {
+
+                System.out.println("Goodbye");
+            }
+        }while(exit);
 
 
 
     }
 }
-
-
-
 
 
 //        System.out.println("Which contact did you want to delete?");
