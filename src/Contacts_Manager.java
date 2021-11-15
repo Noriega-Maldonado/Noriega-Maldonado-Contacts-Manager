@@ -13,10 +13,16 @@ public class Contacts_Manager {
     private int contactNumber;
 
 
-    public Contacts_Manager(String fullName, int contactNumber) {
+    public Contacts_Manager(String fullName) {
         this.fullName = fullName;
-        this.contactNumber = contactNumber;
+
     }
+
+//    public void setContactNumber(int contactNumber){
+//
+//        this.contactNumber = contactNumber;
+//
+//    }
 
     public void setFullName(String fullName) {
 
@@ -38,6 +44,47 @@ public class Contacts_Manager {
         this.contactNumber = contactNumber;
     }
 
+    public static void addContact() throws IOException {
+
+        Scanner sc = new Scanner(System.in);
+
+        String directory = "./src/contacts.txt";
+
+        String contacts = "contact.info.txt";
+        Path contactFile = Paths.get(directory, contacts);
+        System.out.println("Enter first and last name of contact");
+        String userInput = sc.nextLine();
+        Contacts_Manager contact1 = new Contacts_Manager(userInput);
+//        System.out.println("Enter contact number");
+
+        try {
+            Path write = Files.write(contactFile, Arrays.asList(contact1.fullName), StandardOpenOption.APPEND);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+//    public static void addContactNumber() throws IOException {
+//        Scanner sc = new Scanner(System.in);
+//
+//        String directory = "./src/contacts.txt";
+//
+//        String contacts = "contact.info.txt";
+//        Path contactFile = Paths.get(directory, contacts);
+//
+//        System.out.println("Enter contact number");
+//        int userInputNum = sc.nextInt();
+//        contact1.addContact(userInputNum);
+//        try {
+//           Path write = Files.write(contactFile, Arrays.asList(contact1.contactNumber), StandardOpenOption.APPEND);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+////
+////
+//    }
+
+
     public static void main(String[] args) throws IOException {
 
         Scanner sc = new Scanner(System.in);
@@ -50,6 +97,10 @@ public class Contacts_Manager {
 
         Path contactFile = Paths.get(directory, contacts);
 
+//        System.out.println("Please enter a full name: ");
+//        sc.nextLine();
+//        String userInputk
+//                = sc.nextLine();
         if (Files.notExists(dataDirectory)) {
 
             try {
@@ -65,9 +116,8 @@ public class Contacts_Manager {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
         }
-
-
 
 
 //     List<String> Files.readAllLine(contactFile);
@@ -77,12 +127,24 @@ public class Contacts_Manager {
         System.out.println("3. Search a contact by name.");
         System.out.println("4. Delete an existing contact.");
         System.out.println("5. Exit.");
-//        System.out.println("Enter an option (1, 2, 3, 4 or 5) :");
-//        int userInput1 = sc.nextInt();
+        System.out.println("Enter an option (1, 2, 3, 4 or 5) :");
+        int userInput1 = sc.nextInt();
 //        System.out.println("Please enter a full name: ");
 //        sc.nextLine();
 //        String userInput2 = sc.nextLine();
 //        Contacts_Manager contact1 = new Contacts_Manager("Jose","Maldonado",2109118925);
+//
+        if (userInput1 == 1) {
+            List<String> printContacts = Files.readAllLines(contactFile);
+//            System.out.print(printContacts);
+            for (int i = 0; i < printContacts.size(); i++) {
+                System.out.println((i + 1) + ". " + printContacts.get(i));
+            }
+//        } else {
+//        }(userInput1 == 2) {
+//            addContact();
+//        }
+        }
 //        Add new contacts
 //        try {
 //            Files.write(contactFile, Arrays.asList(userInput2),StandardOpenOption.APPEND);
@@ -92,18 +154,7 @@ public class Contacts_Manager {
 //        if (userInput == 1){
 
 //      View all contacts
-        List<String> printContacts = Files.readAllLines(contactFile);
-        System.out.println(printContacts);
 
-//        List<String> printContacts = Files.readAllLines(contactFile);
-//        List<String> newList = new ArrayList<>();
-// searching though our contact list and finding match from user input
-//        for (String line : printContacts) {
-//            if (line.equals(userInput2)) {
-//                System.out.println("true");
-//            } else
-//            {
-//            }
 
 //        Patric's code of printing/viewing contact info list:
 //        List<String> printContacts = Files.readAllLines(contactFile);
@@ -117,26 +168,26 @@ public class Contacts_Manager {
 //                }
 //            }
 //above code is printing 5 times with 16 contacts. and adding another print every time code runs
-        System.out.println("Which contact did you want to delete?");
-        String userInputDelete = sc.nextLine();
+//        System.out.println("Which contact did you want to delete?");
+//        String userInputDelete = sc.nextLine();
 
 //        Deleting a contact
 //        https://crunchify.com/in-java-how-to-remove-elements-while-iterating-a-list-arraylist-5-different-ways/
 
 
-        ListIterator<String> contactList = printContacts.listIterator();
-        while (contactList.hasNext()) {
-
-            if (userInputDelete.equals(contactList.next())) {
+//        ListIterator<String> contactList = printContacts.listIterator();
+//        while (contactList.hasNext()) {
+//
+//            if (userInputDelete.equals(contactList.next())) {
 //                System.out.println("true");
-                contactList.remove();
+//                contactList.remove(userInputDelete);
 
 
-            }
+    }
 
 
-        }
-        System.out.println(contactList);
+}
+//        System.out.println(contactList);
 
 
 //       System.out.println(printContacts.replaceAll("[","").replaceAll("]",""));
@@ -144,9 +195,9 @@ public class Contacts_Manager {
 //        }else if(userInput ==2){
 
 
-    }
 
-}
+
+
 
 
 
