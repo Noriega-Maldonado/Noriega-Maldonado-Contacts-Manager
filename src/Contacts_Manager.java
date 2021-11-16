@@ -12,12 +12,12 @@ public class Contacts_Manager {
 
     private static Scanner scanner;
     private String fullName;
-    private int contactNumber;
+//    private int contactNumber;
 
 
-    public Contacts_Manager(String fullName, int contactNumber) {
+    public Contacts_Manager(String fullName) {
         this.fullName = fullName;
-        this.contactNumber = contactNumber;
+//        this.contactNumber = contactNumber;
 
     }
 
@@ -31,16 +31,16 @@ public class Contacts_Manager {
         return fullName;
     }
 
-    public int getContactNumber() {
+//    public int getContactNumber() {
+//
+//        return contactNumber;
+//
+//    }
 
-        return contactNumber;
-
-    }
-
-    public void setContactNumber(int contactNumber) {
-
-        this.contactNumber = contactNumber;
-    }
+//    public void setContactNumber(int contactNumber) {
+//
+//        this.contactNumber = contactNumber;
+//    }
 
 //    public void deleteContact(int index){
 //        printlist.remove(index);
@@ -92,12 +92,12 @@ public class Contacts_Manager {
 
         String contacts = "contact.info.txt";
         Path contactFile = Paths.get(directory, contacts);
-        System.out.println("Enter first and last name of contact");
+        System.out.println("Enter full name and number of contact");
         String userInput = sc.nextLine();
-        System.out.println("Enter contact number");
-        int userInputNum = sc.nextInt();
+//        System.out.println("Enter contact number");
+//        int userInputNum = sc.nextInt();
 
-        Contacts_Manager contact1 = new Contacts_Manager(userInput, userInputNum);
+        Contacts_Manager contact1 = new Contacts_Manager(userInput);
 //        System.out.println("Enter contact number");
 
         try {
@@ -294,10 +294,10 @@ public class Contacts_Manager {
                 viewContacts();
             } else if (userInput == 5) {
 
-                System.out.println("Goodbye");
+                System.out.println("THAT'S 4!!!");
+                exit = false;
 
             }
-            break;
         } while (exit);
 
 
@@ -305,24 +305,6 @@ public class Contacts_Manager {
 }
 
 
-//        System.out.println("Which contact did you want to delete?");
-//        String userInputDelete = sc.nextLine();
-
-//        Deleting a contact
-//        https://crunchify.com/in-java-how-to-remove-elements-while-iterating-a-list-arraylist-5-different-ways/
-
-
-//        ListIterator<String> contactList = printContacts.listIterator();
-//        while (contactList.hasNext()) {
-//
-//            if (userInputDelete.equals(contactList.next())) {
-//                System.out.println("true");
-//                contactList.remove(userInputDelete);
-
-
-//       System.out.println(printContacts.replaceAll("[","").replaceAll("]",""));
-//
-//        }else if(userInput ==2){
 
 
 
