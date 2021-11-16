@@ -13,16 +13,12 @@ public class Contacts_Manager {
     private String fullName;
     private int contactNumber;
 
-
     public Contacts_Manager(String fullName, int contactNumber) {
         this.fullName = fullName;
         this.contactNumber = contactNumber;
-
     }
 
-
     public void setFullName(String fullName) {
-
         this.fullName = fullName;
     }
 
@@ -31,19 +27,13 @@ public class Contacts_Manager {
     }
 
     public int getContactNumber() {
-
         return contactNumber;
 
     }
 
     public void setContactNumber(int contactNumber) {
-
         this.contactNumber = contactNumber;
     }
-
-//    public void deleteContact(int index){
-//        printlist.remove(index);
-//    }
 
     public static void viewContacts() throws IOException {
 
@@ -105,27 +95,6 @@ public class Contacts_Manager {
             e.printStackTrace();
         }
     }
-
-//    public static void addContactNumber() throws IOException {
-//        Scanner sc = new Scanner(System.in);
-//
-//        String directory = "./src/contacts.txt";
-//
-//        String contacts = "contact.info.txt";
-//        Path contactFile = Paths.get(directory, contacts);
-//
-//        System.out.println("Enter contact number");
-//        int userInputNum = sc.nextInt();
-//        contact1.addContact(userInputNum);
-//        try {
-//           Path write = Files.write(contactFile, Arrays.asList(contact1.contactNumber), StandardOpenOption.APPEND);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-////
-////
-//    }
-
 
     public static void findEntry() {
 
@@ -290,8 +259,9 @@ public class Contacts_Manager {
 //              exit program:
                 } else if (userInput == 5) {
                     System.out.println("Goodbye");
+                    exit = false;
                 }
-                break;
+
             } while (exit);
         }
     }
@@ -300,107 +270,3 @@ public class Contacts_Manager {
         menu();
     }
 }
-
-
-//
-//        Scanner sc = new Scanner(System.in);
-//
-//        String directory = "./src/contacts.txt";
-//
-//        String contacts = "contact.info.txt";
-//
-//        Path dataDirectory = Paths.get(directory);
-//
-//        Path contactFile = Paths.get(directory, contacts);
-//
-//
-//        if (Files.notExists(dataDirectory)) {
-//
-//            try {
-//                Files.createDirectories(dataDirectory);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//
-//        if (!Files.exists(contactFile)) {
-//            try {
-//                Files.createFile(contactFile);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//
-//        }
-
-
-//        int userInput = 0;
-//        boolean exit = true;
-//
-//        do {
-//            System.out.println("1. View Contacts.");
-//            System.out.println("2. Add a new contact");
-//            System.out.println("3. Search a contact by name.");
-//            System.out.println("4. Delete an existing contact.");
-//            System.out.println("5. Exit.");
-//            System.out.println("Enter an option (1, 2, 3, 4 or 5) :");
-//            userInput = sc.nextInt();
-//
-////          View Contacts
-//
-//            if (userInput == 1) {
-//                viewContacts();
-////
-////            add new contact
-//
-//            } else if (userInput == 2) {
-//
-//                addContact();
-//                System.out.println("You just added a new contact!");
-//
-//                viewContacts();
-//
-//            } else if (userInput == 3) {
-//
-//                findEntry();
-//            } else if (userInput == 4) {
-//                deleteContact();
-//                viewContacts();
-//            } else if (userInput == 5) {
-//
-//                System.out.println("Goodbye");
-//
-//            }
-//            break;
-//        } while (exit);
-//
-//
-//    }
-//}
-
-
-//        System.out.println("Which contact did you want to delete?");
-//        String userInputDelete = sc.nextLine();
-
-//        Deleting a contact
-//        https://crunchify.com/in-java-how-to-remove-elements-while-iterating-a-list-arraylist-5-different-ways/
-
-
-//        ListIterator<String> contactList = printContacts.listIterator();
-//        while (contactList.hasNext()) {
-//
-//            if (userInputDelete.equals(contactList.next())) {
-//                System.out.println("true");
-//                contactList.remove(userInputDelete);
-
-
-//       System.out.println(printContacts.replaceAll("[","").replaceAll("]",""));
-//
-//        }else if(userInput ==2){
-
-
-
-
-
-
-
-
