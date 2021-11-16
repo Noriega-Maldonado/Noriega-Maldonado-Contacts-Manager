@@ -10,7 +10,6 @@ import java.util.ListIterator;
 
 public class Contacts_Manager {
 
-    private static Scanner scanner;
     private String fullName;
     private int contactNumber;
 
@@ -255,6 +254,9 @@ public class Contacts_Manager {
 
         int userInput = 0;
         boolean exit = true;
+//       have this code below here because kept falling through not sure if continue would have fixed the issue
+//       without it we fall through but there is another while at the bottom of loop so this may not be syntactically correct
+//       but it does run with no issue
         userInput = -1;
         while (userInput != 5) {
 
