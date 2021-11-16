@@ -5,7 +5,8 @@ import java.nio.file.StandardOpenOption;
 import java.nio.file.Paths;
 import java.nio.file.Files;
 import java.util.*;
-
+import java.util.ArrayList;
+import java.util.ListIterator;
 
 public class Contacts_Manager {
 
@@ -14,16 +15,12 @@ public class Contacts_Manager {
     private int contactNumber;
 
 
-    public Contacts_Manager(String fullName) {
+    public Contacts_Manager(String fullName, int contactNumber) {
         this.fullName = fullName;
+        this.contactNumber = contactNumber;
 
     }
 
-//    public void setContactNumber(int contactNumber){
-//
-//        this.contactNumber = contactNumber;
-//
-//    }
 
     public void setFullName(String fullName) {
 
@@ -97,7 +94,10 @@ public class Contacts_Manager {
         Path contactFile = Paths.get(directory, contacts);
         System.out.println("Enter first and last name of contact");
         String userInput = sc.nextLine();
-        Contacts_Manager contact1 = new Contacts_Manager(userInput);
+        System.out.println("Enter contact number");
+        int userInputNum = sc.nextInt();
+
+        Contacts_Manager contact1 = new Contacts_Manager(userInput, userInputNum);
 //        System.out.println("Enter contact number");
 
         try {
@@ -198,19 +198,31 @@ public class Contacts_Manager {
         }
         System.out.println("Which contact would you like to delete?");
         String userInput = sc.nextLine();
-        if (printContacts.contains(userInput)){
-            printContacts.remove(userInput);
+        ArrayList<String> updateList = new ArrayList<>();
+        for (String line : printContacts) {
+            if (line.toLowerCase().contains(userInput.toLowerCase())) {
+            continue;
+            }updateList.add(line);
+            Files.write(contactFile, updateList);
+//            Files.write(contactFile, updateList);
         }
 
-//        Iterator iterator = printContacts.iterator();
-//        while (iterator.hasNext()) {
-//            int x = (Integer) iterator.next();
-//            if (x == userInput)
-//                iterator.remove();
-        }
+//        printContacts.remove(userInput);
+//        System.out.println(printContacts.remove(userInput));
 
 
-//        printContacts.remove(new Integer(userInput));
+//        if (printContacts.contains(userInput)){
+//            printContacts.remove(userInput);
+//        }
+
+//        ListIterator<String> contactsIterator = printContacts.listIterator();
+//
+//        while (contactsIterator.hasNext()) {
+//
+//            if (userInput.equals(contactsIterator.next()))
+//                contactsIterator.remove();
+//        }
+    }
 
 
 //    }
@@ -249,7 +261,7 @@ public class Contacts_Manager {
 
 
         int userInput = 0;
-        boolean exit = false;
+        boolean exit = true;
 
         do {
             System.out.println("1. View Contacts.");
@@ -283,10 +295,10 @@ public class Contacts_Manager {
             } else if (userInput == 5) {
 
                 System.out.println("Goodbye");
-                break;
-            }
-        }while(exit);
 
+            }
+            break;
+        } while (exit);
 
 
     }
