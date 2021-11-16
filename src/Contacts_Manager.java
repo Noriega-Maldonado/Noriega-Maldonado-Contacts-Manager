@@ -193,7 +193,6 @@ public class Contacts_Manager {
         for (int i = 0; i < printContacts.size(); i++) {
 
             System.out.println((i + 1) + ". " + printContacts.get(i));
-
         }
         System.out.println("Which contact would you like to delete?");
         String userInput = sc.nextLine();
@@ -215,17 +214,11 @@ public class Contacts_Manager {
             printContacts.remove(userInput);
         }
 
-        ListIterator<String> contactsIterator = printContacts.listIterator();
-
-        while (contactsIterator.hasNext()) {
-
-            if (userInput.equals(contactsIterator.next()))
-                contactsIterator.remove();
-        }
+        printContacts.removeIf(userInput::equals);
     }
 
     // got loop to work just needs refactoring/ cleaning up:
-    public static void menu() {
+    public static void menu() throws IOException {
 
         Scanner sc = new Scanner(System.in);
 
@@ -272,51 +265,28 @@ public class Contacts_Manager {
 
 //          View Contact:
                 if (userInput == 1) {
-                    try {
-                        viewContacts();
-                        System.out.println("----------");
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    viewContacts();
+                    System.out.println("----------");
 //            add new contact:
                 } else if (userInput == 2) {
 
-                    try {
-                        addContact();
-                        System.out.println("----------");
+                    addContact();
+                    System.out.println("----------");
 
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
                     System.out.println("You just added a new contact!");
 
-                    try {
-                        viewContacts();
-                        System.out.println("----------");
-
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    viewContacts();
+                    System.out.println("----------");
 //             find contact:
                 } else if (userInput == 3) {
                     findEntry();
                     System.out.println("\n----------");
 //             delete contact:
                 } else if (userInput == 4) {
-                    try {
-                        deleteContact();
-                        System.out.println("----------");
-
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    try {
-                        viewContacts();
-                        System.out.println("----------");
-
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    deleteContact();
+                    System.out.println("----------");
+                    viewContacts();
+                    System.out.println("----------");
 //              exit program:
                 } else if (userInput == 5) {
                     System.out.println("Goodbye");
@@ -326,7 +296,7 @@ public class Contacts_Manager {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         menu();
     }
 }
